@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMVC.Filter;
 using WebMVC.Models;
 
 namespace WebMVC.Controllers
 {
     public class HomeController : Controller
     {
+        [Log]
         public ActionResult Index(string id)
         {
             // try + tab 2 lần
@@ -29,6 +31,11 @@ namespace WebMVC.Controllers
             return View(list);
         }
 
+
+        public ActionResult DemoPartialViews(int? id)
+        {
+            return PartialView();
+        }
         public ActionResult Detail(int? id)
         {
             ViewBag.Id = id;

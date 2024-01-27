@@ -32,3 +32,35 @@
         </table>
     </div>
 </div>
+@*<div id="DemoPartialViews_Data"></div>*@
+@*@Html.Action("DemoPartialViews", "Home", new { id=10 })*@
+
+@Html.Partial("~/Views/Home/StaticPatialView.cshtml",new WebMVC.Models.DataModel { Id =10 , Name= "Demo StaticPatialView" })
+<script>
+
+    $(document).ready(function () {
+        LoadPartialView();
+
+    });
+
+
+    function LoadPartialView() {
+        var Url = 'http://localhost:56996/Home/DemoPartialViews';
+        var input_data = {
+            "id": 10
+        };
+
+        $.ajax({
+            type: 'GET',
+            url: Url,
+            data: input_data,
+            success: function (result) {
+                $("#DemoPartialViews_Data").html("");
+                $("#DemoPartialViews_Data").html(result);
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+</script>
