@@ -29,7 +29,7 @@ namespace WebMVC.Controllers
             return View(list);
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int? id)
         {
             ViewBag.Id = id;
             return View();
@@ -39,8 +39,8 @@ namespace WebMVC.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            //return RedirectToAction("Index", "Home");
-            return View();
+            return RedirectToAction("Index", "Home");
+            //return View();
         }
 
         public ActionResult Contact()

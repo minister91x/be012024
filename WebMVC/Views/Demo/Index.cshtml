@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<a class="btn btn-success" id="btnSave">Click Me</a>
+
+<script>
+    $(document).ready(function () {
+
+        $("#btnSave").click(function () {
+            CallPost();
+        });
+    });
+
+
+    function CallPost() {
+        var Url = 'http://localhost:56996/demo/JsonData';
+        var input_data = {
+            "Id": 7,
+            "Name": "ASPNET 7"
+        };
+
+
+        $.ajax({
+            type: 'POST',
+            url: Url,
+            data: input_data,
+            success: function (result) {
+                alert(JSON.stringify(result));
+
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+</script>
+
