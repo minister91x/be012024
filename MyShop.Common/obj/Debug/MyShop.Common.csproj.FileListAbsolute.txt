@@ -1,0 +1,6 @@
+C:\Users\Admin\source\repos\BE_012024\MyShop.Common\bin\Debug\MyShop.Common.dll
+C:\Users\Admin\source\repos\BE_012024\MyShop.Common\bin\Debug\MyShop.Common.pdb
+C:\Users\Admin\source\repos\BE_012024\MyShop.Common\obj\Debug\MyShop.Common.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\BE_012024\MyShop.Common\obj\Debug\MyShop.Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\BE_012024\MyShop.Common\obj\Debug\MyShop.Common.dll
+C:\Users\Admin\source\repos\BE_012024\MyShop.Common\obj\Debug\MyShop.Common.pdb

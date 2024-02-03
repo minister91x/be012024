@@ -16,7 +16,7 @@ namespace WebMVC
             routes.MapRoute(
              name: "Default1",
              url: "chi-tiet-{id}",
-             defaults: new { controller = "Home", action = "Detail", id = UrlParameter.Optional }
+             defaults: new { controller = "Product", action = "ProductInsertUpdate", id = UrlParameter.Optional }
          );
 
             routes.MapRoute(

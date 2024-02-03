@@ -1,0 +1,9 @@
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\DataAccess.ProductNetFrameWork.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\DataAccess.ProductNetFrameWork.pdb
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\MyShop.Common.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\MyShop.Common.pdb
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\obj\Debug\DataAccess.ProductNetFrameWork.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\obj\Debug\DataAccess.ProductNetFrameWork.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\obj\Debug\DataAccess.ProductNetFrameWork.csproj.CopyComplete
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\obj\Debug\DataAccess.ProductNetFrameWork.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\obj\Debug\DataAccess.ProductNetFrameWork.pdb

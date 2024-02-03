@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Filter\LogAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,6 +170,9 @@
     <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Home\DemoPartialViews.cshtml" />
     <Content Include="Views\Home\StaticPatialView.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\ListProductPartial.cshtml" />
+    <Content Include="Views\Product\ProductInsertUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -185,6 +189,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess.ProductNetFrameWork\DataAccess.ProductNetFrameWork.csproj">
+      <Project>{e86ffb9d-e4b9-4f61-b359-121dffca5adc}</Project>
+      <Name>DataAccess.ProductNetFrameWork</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Common\MyShop.Common.csproj">
+      <Project>{1701220d-3a82-4f37-bf25-b4bd173db76c}</Project>
+      <Name>MyShop.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

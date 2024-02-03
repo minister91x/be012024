@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "ProductInsertUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model DataAccess.ProductNetFrameWork.DTO.Product
+
+<div class="form-group">
+    <label for="email">Tên sản phẩm:</label>
+    <input type="hidden" value="@Model.Id" id="txtProductId"/>
+    <input type="text" class="form-control" value="@Model.Name" id="txtProductName">
+</div>
+
+<div class="form-group">
+    <label for="email">giá sản phẩm:</label>
+    <input type="text" class="form-control" value="@Model.Price" id="txProductPrice">
+</div>
+
+<button type="button" class="btn btn-success" id="btnSave">Update</button>
+<button type="button" class="btn btn-default" id="btnBack">Back</button>
+
+<script>
+
+    $(document).ready(function () {
+
+
+        $("#btnSave").click(function () {
+
+            ProductInsertUpdate();
+        });
+
+        $("#btnBack").click(function () {
+
+            window.location.href = "/Product";
+        });
+    });
+
+    function ProductInsertUpdate() {
+
+        var Url = '/Product/Product_InsertUpdate';
+        var input_data = {
+            Id: $("#txtProductId").val(),
+            Name: $("#txtProductName").val(),
+            Price: $("#txProductPrice").val()
+
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: Url,
+            data: input_data,
+            dataType: 'json',
+            success: function (result) {
+                alert(result.returnMessage);
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+
+</script>

@@ -77,3 +77,7 @@ C:\Users\Admin\source\repos\BE_012024\WebMVC\obj\Debug\WebMVC.csproj.CoreCompile
 C:\Users\Admin\source\repos\BE_012024\WebMVC\obj\Debug\WebMVC.csproj.CopyComplete
 C:\Users\Admin\source\repos\BE_012024\WebMVC\obj\Debug\WebMVC.dll
 C:\Users\Admin\source\repos\BE_012024\WebMVC\obj\Debug\WebMVC.pdb
+C:\Users\Admin\source\repos\BE_012024\WebMVC\bin\DataAccess.ProductNetFrameWork.dll
+C:\Users\Admin\source\repos\BE_012024\WebMVC\bin\MyShop.Common.dll
+C:\Users\Admin\source\repos\BE_012024\WebMVC\bin\DataAccess.ProductNetFrameWork.pdb
+C:\Users\Admin\source\repos\BE_012024\WebMVC\bin\MyShop.Common.pdb

@@ -1,0 +1,55 @@
+﻿@model List<DataAccess.ProductNetFrameWork.DTO.Product>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <a href="/chi-tiet-@item.Id">Sửa</a>
+                        <a onclick="ProductDelete(@item.Id)"><i class="fa fa-trash"></i>Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script>
+
+
+    function ProductDelete(Id) {
+
+        var res = confirm("Bạn có chắc chắn muốn xóa bản ghi này ?");
+
+        if (res) {
+            var Url = '/Product/ProductDelete';
+            var input_data = {
+                Id: Id
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: Url,
+                data: input_data,
+                dataType: 'json',
+                success: function (result) {
+                    alert(result.returnMessage);
+                },
+                error: function (data) {
+                    console.log("error:" + JSON.stringify(data));
+                }
+            });
+    }
+    }
+</script>
