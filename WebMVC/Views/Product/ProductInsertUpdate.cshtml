@@ -42,9 +42,12 @@
         var input_data = {
             Id: $("#txtProductId").val(),
             Name: $("#txtProductName").val(),
-            Price: $("#txProductPrice").val()
+            Price: $("#txProductPrice").val(),
+            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
 
         };
+
+        // Validation 
 
         $.ajax({
             type: 'POST',

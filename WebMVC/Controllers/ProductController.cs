@@ -53,11 +53,20 @@ namespace WebMVC.Controllers
             return View(model);
         }
 
+        [ValidateAntiForgeryToken]
         public JsonResult Product_InsertUpdate(Product product)
         {
             var returnData = new ReturnData();
             try
             {
+
+                if (!ModelState.IsValid)
+                {
+                    returnData.returnCode = -1;
+                    returnData.returnMessage = "Dữ liệu đầu vào không hợp lệ";
+                    return Json(returnData, JsonRequestBehavior.AllowGet);
+                }
+
                 // kiểm tra xem dữ liệu hợp lệ không 
                 if (product == null
                     || product.Id < 0
