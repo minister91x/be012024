@@ -16,6 +16,8 @@ namespace DataAccess.ProductNetFrameWork.DTO
         public string Name { get; set; }
         public int Price { get; set; }
         public int CategoryId { get; set; }
+
+        
     }
 
     // View Model

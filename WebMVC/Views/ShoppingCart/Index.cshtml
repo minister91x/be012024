@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách giỏ hàng</h2>
+@Html.Action("ListShoppingCartPartial", "ShoppingCart")
+<div class="form-group">
+    <label for="email">Tên khách hàng:</label>
+    <input type="text" class="form-control" id="txtCustomerName">
+</div>
+<div class="form-group">
+    <label for="email">Số điện thoại:</label>
+    <input type="text" class="form-control" id="txtCustomerAddress">
+</div>
+<div class="form-group">
+    <label for="email">địa chỉ nhận hàng:</label>
+    <input type="text" class="form-control" id="txtCustomerPhone">
+</div>
+
+<button type="button" class="btn btn-success" id="btnSave">Đặt hàng</button>
+<button type="button" class="btn btn-default" id="btnBack">Back</button>
+<script>
+    $(document).ready(function () {
+
+        $("#btnSave").click(function () {
+            CreateOrder();
+        });
+    });
+
+
+    function CreateOrder() {
+        var Url = '/ShoppingCart/CreateOrder';
+        var input_data = {
+            CustomerName: $("#txtCustomerName").val(),
+            CustomerAddress: $("#txtCustomerAddress").val(),
+            CustomerPhone: $("#txtCustomerPhone").val(),
+            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+
+        };
+
+        // Validation 
+
+        $.ajax({
+            type: 'POST',
+            url: Url,
+            data: input_data,
+            dataType: 'json',
+            success: function (result) {
+                alert(JSON.stringify(result));
+            },
+            error: function (data) {
+                console.log("error:" + JSON.stringify(data));
+            }
+        });
+    }
+</script>

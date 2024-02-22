@@ -1,0 +1,45 @@
+﻿@model List<DataAccess.ProductNetFrameWork.DTO.ShoppingCart>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                var totalAmount = item.Price * item.Quality;
+                <tr>
+                    <td>@item.ProductID</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <input class="form-control" type="number"
+                               data-productid="@item.ProductID"
+                               data-productname="@item.ProductName"
+                               data-price="@item.Price"
+                               onchange="UpdateCartItem(this)" id="txtQuantity" value="@item.Quality" style="width:50%" />
+                    </td>
+                    <td>@totalAmount</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm"
+                           data-productid="@item.ProductID"
+                           data-productname="@item.ProductName"
+                           data-price="@item.Price"
+                           onclick="RemoveItemFromCart(this)">
+                            <i class="fas fa-trash-alt">
+                            </i>Xóa
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -160,7 +160,7 @@ namespace DataAccess.ProductNetFrameWork.DAOImpl
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    list.Add(new Product { Id = i + 1, Name = "Product " + i });
+                    list.Add(new Product { Id = i + 1, Name = "Product " + i, Price = 10000 });
                 }
             }
             catch (Exception ex)

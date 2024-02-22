@@ -5,6 +5,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Hành động</th>
+            <th>Mua</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,16 @@
                     <td>
                         <a href="/chi-tiet-@item.Id">Sửa</a>
                         <a onclick="ProductDelete(@item.Id)"><i class="fa fa-trash"></i>Xóa</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-sm"
+                           data-productid="@item.Id"
+                           data-productname="@item.Name"
+                           data-price="@item.Price"
+                           onclick="AddItemToCart(this)">
+                            <i class="fas fa-cart-plus">
+                            </i>Mua
+                        </a>
                     </td>
                 </tr>
             }
@@ -50,6 +61,6 @@
                     console.log("error:" + JSON.stringify(data));
                 }
             });
-    }
+        }
     }
 </script>
