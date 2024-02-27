@@ -87,11 +87,11 @@ namespace WebMVC.Controllers
                 }
 
                 var cart = new Order();
-                cart.Ma_DonHang = "DH_" + Guid.NewGuid().ToString();
-                cart.TongTien = totalAmount;
-                cart.TenKhachHang = requestData.CustomerName;
+                cart.MaDonHang = "DH_" + Guid.NewGuid().ToString();
+                cart.TotalAmount = totalAmount;
+                //cart.TenKhachHang = requestData.CustomerName;
 
-                return cart.Ma_DonHang;
+                return cart.MaDonHang;
             }
             catch (Exception ex)
             {

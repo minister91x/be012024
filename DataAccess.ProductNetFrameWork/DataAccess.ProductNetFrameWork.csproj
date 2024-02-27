@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOImpl\OrderDAOImpl.cs" />
     <Compile Include="DAOImpl\ProductDAOImpl.cs" />
+    <Compile Include="DAO\IOrderDAO.cs" />
     <Compile Include="DAO\IProductDAO.cs" />
+    <Compile Include="DBHelper\DBConnection.cs" />
     <Compile Include="DTO\Order.cs" />
     <Compile Include="DTO\OrderDetail.cs" />
     <Compile Include="DTO\OrderInsertRequestData.cs" />
@@ -58,5 +62,6 @@
       <Name>MyShop.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
