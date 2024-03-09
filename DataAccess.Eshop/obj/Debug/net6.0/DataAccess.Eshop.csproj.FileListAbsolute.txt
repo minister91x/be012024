@@ -1,0 +1,14 @@
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\bin\Debug\net6.0\DataAccess.Eshop.deps.json
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\bin\Debug\net6.0\DataAccess.Eshop.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\bin\Debug\net6.0\DataAccess.Eshop.pdb
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.AssemblyInfo.cs
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\refint\DataAccess.Eshop.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.pdb
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\ref\DataAccess.Eshop.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\bin\Debug\net6.0\DataAccess.Eshop.runtimeconfig.json
+C:\Users\Admin\source\repos\BE_012024\DataAccess.Eshop\obj\Debug\net6.0\DataAccess.Eshop.genruntimeconfig.cache
