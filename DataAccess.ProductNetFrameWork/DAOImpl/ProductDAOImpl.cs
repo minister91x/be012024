@@ -30,17 +30,17 @@ namespace DataAccess.ProductNetFrameWork.DAOImpl
 
             try
             {
-                if (!string.IsNullOrEmpty(requestData.Name))
+                if (!string.IsNullOrEmpty(requestData.ProductName))
                 {
-                    if (!MyShop.Common.Security.CheckXSSInput(requestData.Name))
+                    if (!MyShop.Common.Security.CheckXSSInput(requestData.ProductName))
                     {
                         return new List<Product>();
                     }
                 }
                 var list = InitialProduct();
 
-                list = !string.IsNullOrEmpty(requestData.Name)
-                    ? list.FindAll(s => s.Name == requestData.Name).ToList()
+                list = !string.IsNullOrEmpty(requestData.ProductName)
+                    ? list.FindAll(s => s.Name == requestData.ProductName).ToList()
                     : list;
 
                 return list;

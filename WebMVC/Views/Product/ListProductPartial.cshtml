@@ -1,4 +1,4 @@
-﻿@model List<DataAccess.ProductNetFrameWork.DTO.Product>
+﻿@model List<DataAccess.ProductNetFrameWork.DTO.ProductFromAPI>
 <table class="table">
     <thead>
         <tr>
@@ -14,21 +14,21 @@
             foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
+                    <td>@item.productId</td>
+                    <td>@item.productName</td>
                     <td>
-                        <a href="/chi-tiet-@item.Id">Sửa</a>
-                        <a onclick="ProductDelete(@item.Id)"><i class="fa fa-trash"></i>Xóa</a>
+                        <a href="/chi-tiet-@item.productId">Sửa</a>
+                        <a onclick="ProductDelete(@item.productId)"><i class="fa fa-trash"></i>Xóa</a>
                     </td>
                     <td>
-                        <a class="btn btn-info btn-sm"
+                        @*<a class="btn btn-info btn-sm"
                            data-productid="@item.Id"
                            data-productname="@item.Name"
                            data-price="@item.Price"
                            onclick="AddItemToCart(this)">
                             <i class="fas fa-cart-plus">
                             </i>Mua
-                        </a>
+                        </a>*@
                     </td>
                 </tr>
             }

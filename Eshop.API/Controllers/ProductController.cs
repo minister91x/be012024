@@ -1,6 +1,7 @@
 ﻿using DataAccess.Eshop.Entities;
 using DataAccess.Eshop.IServices;
-
+using DataAccess.Eshop.RequestData;
+using DataAccess.Eshop.UnitOfWork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,18 +11,23 @@ namespace Eshop.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private IProductServices _productServices;
-        public ProductController(IProductServices productServices) // TIÊM 
+        //private IProductRepository _productRepository;
+        //public ProductController(IProductRepository productRepository) // TIÊM 
+        //{
+        //    _productRepository = productRepository;
+        //}
+
+        private IEShopUnitOfWork  _unitOfWork;
+        public ProductController(IEShopUnitOfWork unitOfWork)
         {
-            _productServices = productServices;
+            _unitOfWork = unitOfWork;
         }
 
-
-        [HttpGet("Product_Getlist")]
-        public async Task<ActionResult> Product_Getlist()
+        [HttpPost("Product_Getlist")]
+        public async Task<ActionResult> Product_Getlist(GetListProductRequestData requestData)
         {
             var list = new List<Product>();
-            list = await _productServices.GetProducts();
+            list = await _unitOfWork._productRepository.GetProducts(requestData);
             return Ok(list);
         }
 
@@ -30,7 +36,7 @@ namespace Eshop.API.Controllers
         public async Task<ActionResult> Product_Delete(ProductDeleteRequestData requestData)
         {
             var list = new ReturnData();
-            list = await _productServices.Product_Delete(requestData);
+            list = await _unitOfWork._productRepository.Product_Delete(requestData);
             return Ok(list);
         }
     }

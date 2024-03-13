@@ -1,6 +1,7 @@
 ﻿using DataAccess.Eshop.EntitiesFrameWork;
 using DataAccess.Eshop.IServices;
 using DataAccess.Eshop.Services;
+using DataAccess.Eshop.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,8 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EshopDBContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
 
-builder.Services.AddTransient<IProductServices, ProductServices>(); // nó sẽ quản lý việc khởi tạo class ProductServices
-
+builder.Services.AddTransient<IProductRepository, ProductRepository>(); // nó sẽ quản lý việc khởi tạo class ProductServices
+builder.Services.AddTransient<IEShopUnitOfWork, EShopUnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

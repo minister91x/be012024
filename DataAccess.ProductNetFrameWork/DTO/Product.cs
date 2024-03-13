@@ -20,6 +20,14 @@ namespace DataAccess.ProductNetFrameWork.DTO
         
     }
 
+    public class ProductFromAPI
+    {
+        public int productId { get; set; }
+        public string productName { get; set; }
+        public int categoryID { get; set; }
+        public int price { get; set; }
+    }
+
     // View Model
 
     public class Product_ViewModel
@@ -34,7 +42,7 @@ namespace DataAccess.ProductNetFrameWork.DTO
 
     public class ProductGetListRequestData
     {
-        public string Name { get; set; }
+        public string ProductName { get; set; }
     }
 
     public class ProductDeleteRequestData

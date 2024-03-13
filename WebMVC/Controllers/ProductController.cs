@@ -1,4 +1,6 @@
 ﻿using DataAccess.ProductNetFrameWork.DTO;
+using MyShop.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +19,18 @@ namespace WebMVC.Controllers
 
         public ActionResult ListProductPartial(ProductGetListRequestData requestData)
         {
-            var list = new List<Product>();
+            var list = new List<ProductFromAPI>();
             try
             {
+                var url = System.Configuration.ConfigurationManager.AppSettings["URL_API"] ?? "";
+                var baseUrl = "Product/Product_Getlist";
 
-                list = new DataAccess.ProductNetFrameWork.DAOImpl.ProductDAOImpl().GetProducts(requestData);
+                var bodyJson = JsonConvert.SerializeObject(requestData);
+
+                var result = HttpRequestHelper.SendPost(url, baseUrl, bodyJson);
+                list = JsonConvert.DeserializeObject<List<ProductFromAPI>>(result);
+
+                // list = new DataAccess.ProductNetFrameWork.DAOImpl.ProductDAOImpl().GetProducts(requestData);
             }
             catch (Exception ex)
             {
@@ -97,7 +106,7 @@ namespace WebMVC.Controllers
                 return Json(returnData, JsonRequestBehavior.AllowGet);
             }
 
-            
+
         }
 
 
