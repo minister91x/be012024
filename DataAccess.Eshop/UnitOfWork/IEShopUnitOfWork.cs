@@ -11,6 +11,8 @@ namespace DataAccess.Eshop.UnitOfWork
     {
         public IProductRepository _productRepository { get; set; }
         //public IOrderRepository _orderRepository { get; set; }
+
+        public IUseRepository  _useRepository { get; set; }
         void SaveChange();
     }
 }

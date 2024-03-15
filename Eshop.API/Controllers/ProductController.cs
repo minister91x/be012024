@@ -2,6 +2,7 @@
 using DataAccess.Eshop.IServices;
 using DataAccess.Eshop.RequestData;
 using DataAccess.Eshop.UnitOfWork;
+using Eshop.API.Filter;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace Eshop.API.Controllers
         }
 
         [HttpPost("Product_Getlist")]
+        [EShopAuthorize()]
         public async Task<ActionResult> Product_Getlist(GetListProductRequestData requestData)
         {
             var list = new List<Product>();
