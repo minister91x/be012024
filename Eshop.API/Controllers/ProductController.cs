@@ -25,7 +25,7 @@ namespace Eshop.API.Controllers
         }
 
         [HttpPost("Product_Getlist")]
-        [EShopAuthorize()]
+        [EShopAuthorize("Product_Getlist", "VIEW")]
         public async Task<ActionResult> Product_Getlist(GetListProductRequestData requestData)
         {
             var list = new List<Product>();
@@ -35,6 +35,7 @@ namespace Eshop.API.Controllers
 
 
         [HttpPost("Product_Delete")]
+        [EShopAuthorize("Product_Delete", "DELETE")]
         public async Task<ActionResult> Product_Delete(ProductDeleteRequestData requestData)
         {
             var list = new ReturnData();

@@ -20,5 +20,8 @@ namespace DataAccess.Eshop.EntitiesFrameWork
 
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<User> user { get; set; }
+
+        public virtual DbSet<Function> function { get; set; }
+        public virtual DbSet<UserFunction> userfunction { get; set; }
     }
 }

@@ -42,6 +42,11 @@ namespace DataAccess.Eshop.Services
             }
         }
 
+        public  async Task<Function> GetFunctionByCode(string FunctionCode)
+        {
+            return _context.function.Where(s=>s.FunctionCode== FunctionCode).FirstOrDefault();
+        }
+
         public async Task<User> Login(UserLoginRequestData requestData)
         {
             try
@@ -56,6 +61,11 @@ namespace DataAccess.Eshop.Services
 
                 throw;
             }
+        }
+
+        public async Task<UserFunction> UserFunction_GetRole(int UserID, int FunctionId)
+        {
+            return _context.userfunction.Where(s => s.UserID == UserID && s.FunctionID == FunctionId).FirstOrDefault();
         }
     }
 }
