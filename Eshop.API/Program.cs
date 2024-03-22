@@ -3,6 +3,7 @@ using DataAccess.Eshop.IServices;
 using DataAccess.Eshop.Services;
 using DataAccess.Eshop.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -15,8 +16,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddDbContext<ApplicationIdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
+
 builder.Services.AddDbContext<EshopDBContext>(options =>
-               options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
+               options.UseSqlServer(configuration.GetConnectionString("ConnStr"), b => b.MigrationsAssembly("Eshop.API")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<EshopDBContext>()
+    .AddDefaultTokenProviders();
+
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

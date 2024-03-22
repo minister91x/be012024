@@ -29,7 +29,7 @@ namespace Eshop.API.Controllers
         public async Task<ActionResult> Product_Getlist(GetListProductRequestData requestData)
         {
             var list = new List<Product>();
-            list = await _unitOfWork._productRepository.GetProducts(requestData);
+           // list = await _unitOfWork._productRepository.GetProducts(requestData);
             return Ok(list);
         }
 
@@ -39,7 +39,7 @@ namespace Eshop.API.Controllers
         public async Task<ActionResult> Product_Delete(ProductDeleteRequestData requestData)
         {
             var list = new ReturnData();
-            list = await _unitOfWork._productRepository.Product_Delete(requestData);
+          //  list = await _unitOfWork._productRepository.Product_Delete(requestData);
             return Ok(list);
         }
     }

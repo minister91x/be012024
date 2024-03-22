@@ -52,69 +52,72 @@ namespace Eshop.API.Filter
                     }
 
                     // check quyền
-                    var function = await _unitOfWork._useRepository.GetFunctionByCode(_functionCode);
-                    if (function == null || function.FunctionID <= 0)
-                    {
-                        context.HttpContext.Response.ContentType = "application/json";
-                        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        context.Result = new JsonResult(new
-                        {
-                            Code = HttpStatusCode.Unauthorized,
-                            Message = "function không tồn tại"
-                        });
+                    //    var function = await _unitOfWork._useRepository.GetFunctionByCode(_functionCode);
+                    //    if (function == null || function.FunctionID <= 0)
+                    //    {
+                    //        context.HttpContext.Response.ContentType = "application/json";
+                    //        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    //        context.Result = new JsonResult(new
+                    //        {
+                    //            Code = HttpStatusCode.Unauthorized,
+                    //            Message = "function không tồn tại"
+                    //        });
 
-                        return;
-                    }
+                    //        return;
+                    //    }
 
-                    // lấy quyền
-                    var userfunction = await _unitOfWork._useRepository.UserFunction_GetRole(Convert.ToInt32(userId), function.FunctionID);
-                    if (userfunction == null || userfunction.UserFunctionID <= 0)
-                    {
-                        context.HttpContext.Response.ContentType = "application/json";
-                        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        context.Result = new JsonResult(new
-                        {
-                            Code = HttpStatusCode.Unauthorized,
-                            Message = "function không tồn tại"
-                        });
+                    //    // lấy quyền
+                    //    var userfunction = await _unitOfWork._useRepository.UserFunction_GetRole(Convert.ToInt32(userId), function.FunctionID);
+                    //    if (userfunction == null || userfunction.UserFunctionID <= 0)
+                    //    {
+                    //        context.HttpContext.Response.ContentType = "application/json";
+                    //        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    //        context.Result = new JsonResult(new
+                    //        {
+                    //            Code = HttpStatusCode.Unauthorized,
+                    //            Message = "function không tồn tại"
+                    //        });
 
-                        return;
-                    }
+                    //        return;
+                    //    }
 
 
-                    // 
+                    //    // 
 
-                    if (_permission == "VIEW")
-                    {
-                        if (userfunction.IsView == 0)
-                        {
-                            context.HttpContext.Response.ContentType = "application/json";
-                            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                            context.Result = new JsonResult(new
-                            {
-                                Code = HttpStatusCode.Unauthorized,
-                                Message = "Bạn không có quyền thực hiện chức năng này"
-                            });
+                    //    if (_permission == "VIEW")
+                    //    {
+                    //        if (userfunction.IsView == 0)
+                    //        {
+                    //            context.HttpContext.Response.ContentType = "application/json";
+                    //            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    //            context.Result = new JsonResult(new
+                    //            {
+                    //                Code = HttpStatusCode.Unauthorized,
+                    //                Message = "Bạn không có quyền thực hiện chức năng này"
+                    //            });
 
-                            return;
-                        }
-                    }
-                }
-                else
-                {
-                    context.HttpContext.Response.ContentType = "application/json";
-                    context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    context.Result = new JsonResult(new
-                    {
-                        Code = HttpStatusCode.Unauthorized,
-                        Message = "Vui lòng đăng nhập để thực hiện chức năng này "
-                    });
+                    //            return;
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    context.HttpContext.Response.ContentType = "application/json";
+                    //    context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    //    context.Result = new JsonResult(new
+                    //    {
+                    //        Code = HttpStatusCode.Unauthorized,
+                    //        Message = "Vui lòng đăng nhập để thực hiện chức năng này "
+                    //    });
 
-                    return;
+                    //    return;
+                    //}
+                    // }
+
+
+                    //}
                 }
             }
-
-
         }
     }
 }

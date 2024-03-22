@@ -29,46 +29,46 @@ namespace Eshop.API.Controllers
             var returnData = new UserLoginReturnData();
             try
             {
-                if (requestData == null
-                    || string.IsNullOrEmpty(requestData.username)
-                    || string.IsNullOrEmpty(requestData.password))
-                {
-                    return Ok(new { msg = "thông tin tài khoản chưa hợp lệ" });
-                }
-                // Bước 1: gửi userName + password lên server thực hiện đăng nhập
-                var user = await _unitOfWork._useRepository.Login(requestData);
+                //if (requestData == null
+                //    || string.IsNullOrEmpty(requestData.username)
+                //    || string.IsNullOrEmpty(requestData.password))
+                //{
+                //    return Ok(new { msg = "thông tin tài khoản chưa hợp lệ" });
+                //}
+                //// Bước 1: gửi userName + password lên server thực hiện đăng nhập
+                //var user = await _unitOfWork._useRepository.Login(requestData);
 
-                // Bước 2: Kiểm tra thông tin
+                //// Bước 2: Kiểm tra thông tin
 
-                //Bước 2.1 nếu không tồn tại
-                if (user == null || user.UserId <= 0)
-                {
-                    return Ok(new { msg = "thông tin tài khoản không đúng" });
-                }
-                // Bước 2.2 có tồn tại -> trả về token
-                var authClaims = new List<Claim> {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()), };
+                ////Bước 2.1 nếu không tồn tại
+                //if (user == null || user.UserId <= 0)
+                //{
+                //    return Ok(new { msg = "thông tin tài khoản không đúng" });
+                //}
+                //// Bước 2.2 có tồn tại -> trả về token
+                //var authClaims = new List<Claim> {
+                //    new Claim(ClaimTypes.Name, user.UserName),
+                //    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()), };
 
                
-                var newAccessToken = CreateToken(authClaims);
+                //var newAccessToken = CreateToken(authClaims);
 
-                var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
-                var refreshToken = GenerateRefreshToken();
+                //var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
+                //var refreshToken = GenerateRefreshToken();
 
-                // Cập nhật lại refeshtoken vào db
-                var expriredDateSettingDay = _configuration["JWT:RefreshTokenValidityInDays"] ?? "";
-                var Req = new AccountUpdateRefeshTokenRequestData
-                {
-                    UserID = user.UserId,
-                    RefeshToken = refreshToken,
-                    RefeshTokenExpired= DateTime.Now.AddDays(Convert.ToInt32(expriredDateSettingDay))
-                };
-                var update = await _unitOfWork._useRepository.AccountUpdateRefeshToken(Req);
+                //// Cập nhật lại refeshtoken vào db
+                //var expriredDateSettingDay = _configuration["JWT:RefreshTokenValidityInDays"] ?? "";
+                //var Req = new AccountUpdateRefeshTokenRequestData
+                //{
+                //    UserID = user.UserId,
+                //    RefeshToken = refreshToken,
+                //   RefeshTokenExpired= DateTime.Now.AddDays(Convert.ToInt32(expriredDateSettingDay))
+                //};
+                //var update = await _unitOfWork._useRepository.AccountUpdateRefeshToken(Req);
 
-                returnData.userName = user.UserName;
-                returnData.token = token;
-                returnData.refeshToken = refreshToken;
+                //returnData.userName = user.UserName;
+                //returnData.token = token;
+                //returnData.refeshToken = refreshToken;
                 return Ok(returnData);
             }
             catch (Exception ex)

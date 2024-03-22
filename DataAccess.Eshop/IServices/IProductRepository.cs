@@ -10,12 +10,12 @@ namespace DataAccess.Eshop.IServices
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetProducts(GetListProductRequestData requestData);
+        //Task<List<Product>> GetProducts(GetListProductRequestData requestData);
 
-        Task<Product> GetProductById(GetProductByIdRequestData requestData);
+        //Task<Product> GetProductById(GetProductByIdRequestData requestData);
 
-        Task<ReturnData> Product_InsertUpdate(Product product);
-        Task<ReturnData> Product_Delete(ProductDeleteRequestData requestData);
+        //Task<ReturnData> Product_InsertUpdate(Product product);
+        //Task<ReturnData> Product_Delete(ProductDeleteRequestData requestData);
             
     }
 }
