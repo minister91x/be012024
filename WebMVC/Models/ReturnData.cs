@@ -16,5 +16,7 @@ namespace WebMVC.Models
         public string userName { get; set; }
         public string token { get; set; }
         public string refeshToken { get; set; }
+
+        public int isAdmin { get; set; }
     }
 }

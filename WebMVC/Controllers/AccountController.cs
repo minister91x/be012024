@@ -39,6 +39,14 @@ namespace WebMVC.Controllers
 
                 returnData = JsonConvert.DeserializeObject<LoginResponseData>(result);
 
+                if (!string.IsNullOrEmpty(returnData.token))
+                {
+                    // set session 
+
+                    HttpContext.Session.Add("USER_NAME", returnData.userName);
+                    HttpContext.Session.Add("USER_TOKEN", returnData.token);
+                    HttpContext.Session.Add("USER_ISADMIN", returnData.isAdmin);
+                }
                 return Json(returnData, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

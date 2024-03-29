@@ -56,5 +56,33 @@ namespace WebMVC.Controllers
 
             return View();
         }
+
+        public ActionResult GrantPermission()
+        {
+            try
+            {
+
+                var session = HttpContext.Session["USER_ISADMIN"] ?? "";
+                if (session == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                if (Convert.ToInt32(session) != 1) // Nếu không phải admin
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                // Xử lý lấy dữ liệu từ bảng UserFunction trên API
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+            return View();
+        }
     }
 }

@@ -10,5 +10,7 @@
         public string token { get; set; }
 
         public string refeshToken { get; set; }
+
+        public int IsAdmin { get; set; }
     }
 }
