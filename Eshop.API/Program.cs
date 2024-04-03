@@ -1,4 +1,5 @@
-﻿using DataAccess.Eshop.EntitiesFrameWork;
+﻿using DataAccess.Eshop.Dapper;
+using DataAccess.Eshop.EntitiesFrameWork;
 using DataAccess.Eshop.IServices;
 using DataAccess.Eshop.Services;
 using DataAccess.Eshop.UnitOfWork;
@@ -46,7 +47,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddTransient<IProductRepository, ProductRepository>(); // nó sẽ quản lý việc khởi tạo class ProductServices
 builder.Services.AddTransient<IUseRepository, UseRepository>();
+builder.Services.AddTransient<IProductDapperRepository, ProductDapperRepositiry>();
 builder.Services.AddTransient<IEShopUnitOfWork, EShopUnitOfWork>();
+builder.Services.AddTransient<IApplicationDbConnection, ApplicationConnection>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

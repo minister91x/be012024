@@ -13,15 +13,19 @@ namespace DataAccess.Eshop.UnitOfWork
         public IProductRepository _productRepository { get; set; }
         public IUseRepository _useRepository { get; set; }
 
+        public IProductDapperRepository _productDapperRepository { get; set; }
+
         // public IOrderRepository _orderRepository { get; set; }
         public EshopDBContext _eshopDBContext;
 
-        public EShopUnitOfWork(IProductRepository productRepository, IUseRepository useRepository,  EshopDBContext eshopDBContext)
+        public EShopUnitOfWork(IProductRepository productRepository, IUseRepository useRepository,
+            EshopDBContext eshopDBContext, IProductDapperRepository productDapperRepository)
         {
             _productRepository = productRepository;
-           // _orderRepository = orderRepository;
+            // _orderRepository = orderRepository;
             _eshopDBContext = eshopDBContext;
-            _useRepository = useRepository; 
+            _useRepository = useRepository;
+            _productDapperRepository = productDapperRepository;
         }
 
 

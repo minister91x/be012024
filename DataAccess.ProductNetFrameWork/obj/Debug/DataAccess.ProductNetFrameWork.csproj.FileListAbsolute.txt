@@ -29,3 +29,5 @@ C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\S
 C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\System.Text.Encodings.Web.xml
 C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\System.Buffers.xml
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\Dapper.dll
+C:\Users\Admin\source\repos\BE_012024\DataAccess.ProductNetFrameWork\bin\Debug\Dapper.xml

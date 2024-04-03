@@ -83,3 +83,4 @@ C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\win\li
 C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\Dapper.dll

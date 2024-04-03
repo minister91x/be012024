@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Dapper/2.1.35": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
       "EPPlus/7.1.0": {
         "type": "package",
         "dependencies": {
@@ -1054,6 +1063,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Dapper": "2.1.35",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.23",
           "Microsoft.EntityFrameworkCore": "6.0.23",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.23"
@@ -1068,6 +1078,27 @@
     }
   },
   "libraries": {
+    "Dapper/2.1.35": {
+      "sha512": "YKRwjVfrG7GYOovlGyQoMvr1/IJdn+7QzNXJxyMh0YfFF5yvDmTYaJOVYWsckreNjGsGSEtrMTpnzxTUq/tZQw==",
+      "type": "package",
+      "path": "dapper/2.1.35",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.1.35.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/net7.0/Dapper.dll",
+        "lib/net7.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml",
+        "readme.md"
+      ]
+    },
     "EPPlus/7.1.0": {
       "sha512": "WmkQo7fWrDInBtQiNRcnZbJumhZO5wSEQ4Eyv47af6j5cvwCyQA4vy9O4MKSHO/0DBUa8YEu7G15BRM4scZzcg==",
       "type": "package",

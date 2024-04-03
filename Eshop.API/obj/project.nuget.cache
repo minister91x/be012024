@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "199m/K/lJY78TUD04nm0sJf7xhBSLDPOKluEM2+QpEzobzePxwdIuoAd3w010HhzZ3udAE7vvy4SR2QGGjlctg==",
+  "dgSpecHash": "05Uy1OrrE9eRwXsVRIBzyR9MeHLvoxDkcpXrA3DmAF0jCxG93ovwKqAxv9aaMpOP9tJlA2cawDlYs4WmeosZZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\BE_012024\\Eshop.API\\Eshop.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\epplus\\7.1.0\\epplus.7.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\epplus.system.drawing\\6.1.1\\epplus.system.drawing.6.1.1.nupkg.sha512",

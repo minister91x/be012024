@@ -39,7 +39,7 @@ namespace Eshop.API.Controllers
         {
             var list = new List<Product>();
 
-            string cacheKey = "PRODUCT_GETLIST_CACHING";
+            string cacheKey = "PRODUCT_GETLIST_CACHING_" + requestData.ProductId;
             // Trying to get data from the Redis cache
 
             byte[] cachedData = await _cache.GetAsync(cacheKey);
@@ -57,7 +57,7 @@ namespace Eshop.API.Controllers
 
             //Nếu trong cache không có dữ liệu thì Vào database để lấy dữ liệu
 
-            list = await _unitOfWork._productRepository.GetProducts(requestData);
+            list = await _unitOfWork._productDapperRepository.GetProducts(requestData);
 
             // Set lại dữ liệu vào cache 
 
@@ -156,16 +156,16 @@ namespace Eshop.API.Controllers
         }
 
 
-          
-    
 
-    [HttpPost("Product_Delete")]
-    [EShopAuthorize("Product_Delete", "DELETE")]
-    public async Task<ActionResult> Product_Delete(ProductDeleteRequestData requestData)
-    {
-        var list = new ReturnData();
-        //  list = await _unitOfWork._productRepository.Product_Delete(requestData);
-        return Ok(list);
+
+
+        [HttpPost("Product_Delete")]
+        [EShopAuthorize("Product_Delete", "DELETE")]
+        public async Task<ActionResult> Product_Delete(ProductDeleteRequestData requestData)
+        {
+            var list = new ReturnData();
+            //  list = await _unitOfWork._productRepository.Product_Delete(requestData);
+            return Ok(list);
+        }
     }
-}
 }

@@ -9,5 +9,6 @@ namespace DataAccess.Eshop.RequestData
     public class GetListProductRequestData
     {
         public string? ProductName { get; set; }
+        public int ProductId { get; set; }
     }
 }

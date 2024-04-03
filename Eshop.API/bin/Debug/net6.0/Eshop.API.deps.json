@@ -21,6 +21,14 @@
           "Eshop.API.dll": {}
         }
       },
+      "Dapper/2.1.35": {
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.1.35.13827"
+          }
+        }
+      },
       "EPPlus/7.1.0": {
         "dependencies": {
           "EPPlus.Interfaces": "6.1.1",
@@ -744,6 +752,7 @@
       },
       "DataAccess.Eshop/1.0.0": {
         "dependencies": {
+          "Dapper": "2.1.35",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.23",
           "Microsoft.EntityFrameworkCore": "6.0.23",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.23"
@@ -759,6 +768,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Dapper/2.1.35": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YKRwjVfrG7GYOovlGyQoMvr1/IJdn+7QzNXJxyMh0YfFF5yvDmTYaJOVYWsckreNjGsGSEtrMTpnzxTUq/tZQw==",
+      "path": "dapper/2.1.35",
+      "hashPath": "dapper.2.1.35.nupkg.sha512"
     },
     "EPPlus/7.1.0": {
       "type": "package",
