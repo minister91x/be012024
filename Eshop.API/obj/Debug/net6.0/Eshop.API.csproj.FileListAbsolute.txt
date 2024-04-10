@@ -84,3 +84,14 @@ C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\unix\l
 C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\Dapper.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\MyShop.Common.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\RestSharp.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\MyShop.Common.pdb
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\MyShop.Common.dll.config
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\RestSharp.xml
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\NLog.config
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\NLog.dll
+C:\Users\Admin\source\repos\BE_012024\Eshop.API\bin\Debug\net6.0\NLog.Extensions.Logging.dll

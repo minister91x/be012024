@@ -3,11 +3,14 @@ using DataAccess.Eshop.IServices;
 using DataAccess.Eshop.RequestData;
 using DataAccess.Eshop.UnitOfWork;
 using Eshop.API.Filter;
+using Eshop.API.LogManager;
 using Eshop.API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using OfficeOpenXml;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using ReturnData = DataAccess.Eshop.Entities.ReturnData;
@@ -26,11 +29,15 @@ namespace Eshop.API.Controllers
 
         private IEShopUnitOfWork _unitOfWork;
         private readonly IDistributedCache _cache;
-
-        public ProductController(IEShopUnitOfWork unitOfWork, IDistributedCache cache)
+        private IConfiguration _configuration;
+        private ILoggerManager _loggerManager;
+        public ProductController(IEShopUnitOfWork unitOfWork, IDistributedCache cache, 
+            IConfiguration configuration,ILoggerManager loggerManager)
         {
             _unitOfWork = unitOfWork;
             _cache = cache;
+            _configuration = configuration;
+            _loggerManager = loggerManager;
         }
 
         [HttpPost("Product_Getlist")]
@@ -51,20 +58,22 @@ namespace Eshop.API.Controllers
                 // If the data is found in the cache, encode and deserialize cached data.
                 var cachedDataString = Encoding.UTF8.GetString(cachedData);
 
-                list = JsonSerializer.Deserialize<List<Product>>(cachedDataString);
+                list = JsonConvert.DeserializeObject<List<Product>>(cachedDataString);
+
+                _loggerManager.LogError("list product cache: | " + JsonConvert.SerializeObject(list));
                 return Ok(list);
             }
 
             //Nếu trong cache không có dữ liệu thì Vào database để lấy dữ liệu
 
             list = await _unitOfWork._productDapperRepository.GetProducts(requestData);
-
+            _loggerManager.LogError("list product : | "+ JsonConvert.SerializeObject(list));
             // Set lại dữ liệu vào cache 
 
 
             if (list.Count > 0)
             {
-                string cachedDataString = JsonSerializer.Serialize(list);
+                string cachedDataString = JsonConvert.SerializeObject(list);
                 var dataToCache = Encoding.UTF8.GetBytes(cachedDataString);
                 // Setting up the cache options
                 DistributedCacheEntryOptions options = new DistributedCacheEntryOptions()
@@ -87,11 +96,43 @@ namespace Eshop.API.Controllers
             var result = new DataAccess.Eshop.Entities.ReturnData();
             try
             {
+                // gọi MEDIA ĐỂ LẤY TÊN ẢNH TỪ BASE64
+                var media_url = _configuration["MEDIA:URL"] ?? "http://localhost:55587/";
+                var base_url = "api/UploadImage/SaveImage_Data";
+                var returnData = new ReturnData();
+                if (!string.IsNullOrEmpty(requestData.Base64Image))
+                {
+                    // kiểm tra xem chữ ký có hợp lệ không ?
+                    var SecretKey = _configuration["SecretKey:IMAGE_DOWN_UPLOAD"] ?? "";
+                    var plantext = requestData.Base64Image + SecretKey;
+                    var Sign = MyShop.Common.Security.MD5(plantext);
+
+                    var req = new SaveImage_DataRequestData
+                    {
+                        Base64Image = requestData.Base64Image,
+                        Sign = Sign
+                    };
+
+                    var jsonBody = JsonConvert.SerializeObject(req);
+                    var result_media = await MyShop.Common.HttpRequestHelper.HttpClientSend(media_url, base_url, jsonBody);
+                    returnData = JsonConvert.DeserializeObject<ReturnData>(result_media);
+                    if (returnData.ReturnCode < 0)
+                    {
+                        result.ReturnCode = -1;
+                        result.ReturnMsg = returnData.ReturnMsg;
+                        return Ok(result);
+                    }
+
+                }
+
+                // gán lại tên ảnh vào Base64Image
+                requestData.Base64Image = returnData.ReturnMsg;
+
                 result = await _unitOfWork._productRepository.Product_InsertUpdate(requestData);
             }
             catch (Exception ex)
             {
-
+              
                 throw;
             }
 

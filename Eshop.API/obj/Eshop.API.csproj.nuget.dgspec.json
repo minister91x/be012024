@@ -114,6 +114,9 @@
             "projectReferences": {
               "C:\\Users\\Admin\\source\\repos\\BE_012024\\DataAccess.Eshop\\DataAccess.Eshop.csproj": {
                 "projectPath": "C:\\Users\\Admin\\source\\repos\\BE_012024\\DataAccess.Eshop\\DataAccess.Eshop.csproj"
+              },
+              "C:\\Users\\Admin\\source\\repos\\BE_012024\\MyShop.Common\\MyShop.Common.csproj": {
+                "projectPath": "C:\\Users\\Admin\\source\\repos\\BE_012024\\MyShop.Common\\MyShop.Common.csproj"
               }
             }
           }
@@ -154,6 +157,14 @@
               "target": "Package",
               "version": "[8.0.3, )"
             },
+            "NLog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[5.3.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -179,6 +190,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\Admin\\source\\repos\\BE_012024\\MyShop.Common\\MyShop.Common.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\BE_012024\\MyShop.Common\\MyShop.Common.csproj",
+        "projectName": "MyShop.Common",
+        "projectPath": "C:\\Users\\Admin\\source\\repos\\BE_012024\\MyShop.Common\\MyShop.Common.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

@@ -12,5 +12,7 @@ namespace DataAccess.Eshop.Entities
         public string? ProductName { get; set; }
         public int CategoryID { get; set; }
         public int Price { get; set; }
+
+        public string Base64Image { get;set; }
     }
 }

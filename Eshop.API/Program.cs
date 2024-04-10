@@ -3,16 +3,19 @@ using DataAccess.Eshop.EntitiesFrameWork;
 using DataAccess.Eshop.IServices;
 using DataAccess.Eshop.Services;
 using DataAccess.Eshop.UnitOfWork;
+using Eshop.API.LogManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using NLog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 // Add services to the container.
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/NLog.config"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -50,6 +53,12 @@ builder.Services.AddTransient<IUseRepository, UseRepository>();
 builder.Services.AddTransient<IProductDapperRepository, ProductDapperRepositiry>();
 builder.Services.AddTransient<IEShopUnitOfWork, EShopUnitOfWork>();
 builder.Services.AddTransient<IApplicationDbConnection, ApplicationConnection>();
+builder.Services.AddSingleton<ILoggerManager, LoggerManager>();
+
+//builder.RegisterType<LoggerFactory>().As<ILoggerFactory>().SingleInstance();
+//builder.RegisterGeneric(typeof(Logger<>)).As(typeof(ILogger<>)).SingleInstance();
+//builder.Logging.ClearProviders();
+//builder.Logging.AddConsole();
 
 var app = builder.Build();
 

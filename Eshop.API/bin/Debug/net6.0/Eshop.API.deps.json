@@ -15,6 +15,9 @@
           "Microsoft.EntityFrameworkCore": "6.0.23",
           "Microsoft.EntityFrameworkCore.Design": "6.0.23",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.3",
+          "MyShop.Common": "1.0.0",
+          "NLog.Extensions.Logging": "5.3.8",
+          "Newtonsoft.Json": "12.0.2",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -512,6 +515,35 @@
           }
         }
       },
+      "Newtonsoft.Json/12.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
+          }
+        }
+      },
+      "NLog/5.2.8": {
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.2.8.2366"
+          }
+        }
+      },
+      "NLog.Extensions.Logging/5.3.8": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "NLog": "5.2.8"
+        },
+        "runtime": {
+          "lib/net6.0/NLog.Extensions.Logging.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.3.8.469"
+          }
+        }
+      },
       "Pipelines.Sockets.Unofficial/2.2.8": {
         "dependencies": {
           "System.IO.Pipelines": "5.0.1"
@@ -759,6 +791,27 @@
         },
         "runtime": {
           "DataAccess.Eshop.dll": {}
+        }
+      },
+      "MyShop.Common/1.0.0": {
+        "runtime": {
+          "MyShop.Common.dll": {}
+        }
+      },
+      "RestSharp/110.2.0.0": {
+        "runtime": {
+          "RestSharp.dll": {
+            "assemblyVersion": "110.2.0.0",
+            "fileVersion": "110.2.0.0"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/7.0.0.0": {
+        "runtime": {
+          "Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
         }
       }
     }
@@ -1105,6 +1158,27 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
+    "Newtonsoft.Json/12.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+    },
+    "NLog/5.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jAIELkWBs1CXFPp986KSGpDFQZHCFccO+LMbKBTTNm42KifaI1mYzFMFQQfuGmGMTrCx0TFPhDjHDE4cLAZWiQ==",
+      "path": "nlog/5.2.8",
+      "hashPath": "nlog.5.2.8.nupkg.sha512"
+    },
+    "NLog.Extensions.Logging/5.3.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6VD0lyeokWltL6j8lO7mS7v7lbuO/qn0F7kdvhKhEx1JvFyD39nzohOK3JvkVh4Nn3mrcMDCyDxvTvmiW55jQg==",
+      "path": "nlog.extensions.logging/5.3.8",
+      "hashPath": "nlog.extensions.logging.5.3.8.nupkg.sha512"
+    },
     "Pipelines.Sockets.Unofficial/2.2.8": {
       "type": "package",
       "serviceable": true,
@@ -1289,6 +1363,21 @@
     },
     "DataAccess.Eshop/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyShop.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RestSharp/110.2.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Bcl.AsyncInterfaces/7.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

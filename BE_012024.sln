@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eshop.API", "Eshop.API\Esho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVCCore", "WebMVCCore\WebMVCCore.csproj", "{91ED75F1-3467-4A66-A75B-DEDB5E0E2B10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Eshop", "DataAccess.Eshop\DataAccess.Eshop.csproj", "{AC568D93-5F07-40AD-93AC-9AD4165C8D1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.Eshop", "DataAccess.Eshop\DataAccess.Eshop.csproj", "{AC568D93-5F07-40AD-93AC-9AD4165C8D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Media", "Eshop.Media\Eshop.Media.csproj", "{33DEB88D-7194-4637-80FF-E4B1EEF1B69C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{AC568D93-5F07-40AD-93AC-9AD4165C8D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC568D93-5F07-40AD-93AC-9AD4165C8D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC568D93-5F07-40AD-93AC-9AD4165C8D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33DEB88D-7194-4637-80FF-E4B1EEF1B69C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33DEB88D-7194-4637-80FF-E4B1EEF1B69C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33DEB88D-7194-4637-80FF-E4B1EEF1B69C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33DEB88D-7194-4637-80FF-E4B1EEF1B69C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
