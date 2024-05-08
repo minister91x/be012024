@@ -17,7 +17,10 @@ namespace DataAccess.ProductNetFrameWork.DTO
         public int Price { get; set; }
         public int CategoryId { get; set; }
 
-        
+        public string ImageSrc { get; set; }
+
+        public string AttPrice { get; set; }
+        public string AttrQuantity { get; set; }
     }
 
     public class ProductFromAPI

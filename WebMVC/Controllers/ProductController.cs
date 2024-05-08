@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMVC.Models;
 
 namespace WebMVC.Controllers
 {
@@ -62,10 +63,10 @@ namespace WebMVC.Controllers
             return View(model);
         }
 
-        [ValidateAntiForgeryToken]
+        // [ValidateAntiForgeryToken]
         public JsonResult Product_InsertUpdate(Product product)
         {
-            var returnData = new ReturnData();
+            var returnData = new DataAccess.ProductNetFrameWork.DTO.ReturnData();
             try
             {
 
@@ -94,11 +95,73 @@ namespace WebMVC.Controllers
                     return Json(returnData, JsonRequestBehavior.AllowGet);
                 }
 
+                if (string.IsNullOrEmpty(product.ImageSrc))
+                {
+                    returnData.returnCode = -3;
+                    returnData.returnMessage = "Sản phẩm không hợp lệ do chưa có ảnh?";
+                    return Json(returnData, JsonRequestBehavior.AllowGet);
+                }
+
+
+                // Gọi API ĐỂ LƯU VÀ LẤY TÊN ẢNH 
+                var productImage = "";
+
+                if (!string.IsNullOrEmpty(product.ImageSrc))
+                {
+                    var SecretKey = System.Configuration.ConfigurationManager.AppSettings["SecretKey"] ?? "";
+                    string urlPath = System.Configuration.ConfigurationManager.AppSettings["API_URL"] ?? "";
+                    string baseUrl = "SaveImage_Data";
+
+
+                    var ImageCount = product.ImageSrc.Split('_').Count();
+                    for (int i = 0; i < ImageCount; i++)
+                    {
+                        var productImgBase64 = product.ImageSrc.Split('_')[i];
+                        // call sang api
+                        //productImage+= 
+
+                        var imageReq = new SaveImage_DataRequestData
+                        {
+                            Base64Image = productImgBase64,
+                            Sign = MyShop.Common.Security.MD5(productImgBase64 + SecretKey)
+                        };
+
+                        string jsonBody = JsonConvert.SerializeObject(imageReq);
+
+                        // gọi api
+
+                        var result = MyShop.Common.HttpRequestHelper.SendPost(urlPath, baseUrl, jsonBody);
+
+                        if (!string.IsNullOrEmpty(result))
+                        {
+                            var SaveImgResp = JsonConvert.DeserializeObject<SaveImageReturnData>(result);
+                            if (SaveImgResp.ReturnCode > 0)
+                            {
+                                productImage += SaveImgResp.ReturnMsg + ",";
+                            }
+                        }
+                    }
+
+
+                    if (!string.IsNullOrEmpty(productImage))
+                    {
+                        productImage = productImage.Substring(0, productImage.Length - 1);
+                    }
+
+                    product.ImageSrc = productImage;
+                }
+
+                
                 var rs = new DataAccess.ProductNetFrameWork.DAOImpl.ProductDAOImpl().ProductInsertUpdate(product);
+
+                // xử lý Atrribute 
+                var priceATTr = product.AttPrice;
+
 
                 return Json(rs, JsonRequestBehavior.AllowGet);
 
             }
+
             catch (Exception)
             {
                 returnData.returnCode = -999;
@@ -113,7 +176,7 @@ namespace WebMVC.Controllers
         [HttpPost]
         public JsonResult ProductDelete(ProductDeleteRequestData requestData)
         {
-            var returnData = new ReturnData();
+            var returnData = new DataAccess.ProductNetFrameWork.DTO.ReturnData();
             try
             {
                 var rs = new DataAccess.ProductNetFrameWork.DAOImpl.ProductDAOImpl().ProductDelete(requestData);

@@ -5,21 +5,98 @@
 }
 
 @model DataAccess.ProductNetFrameWork.DTO.Product
+<style>
+    .column {
+        float: left;
+        width: 25%;
+    }
 
-<div class="form-group">
-    <label for="email">Tên sản phẩm:</label>
-    <input type="hidden" value="@Model.Id" id="txtProductId"/>
-    <input type="text" class="form-control" value="@Model.Name" id="txtProductName">
-</div>
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
 
-<div class="form-group">
-    <label for="email">giá sản phẩm:</label>
-    <input type="text" class="form-control" value="@Model.Price" id="txProductPrice">
-</div>
+        <div class="form-group">
+            <label for="email">Tên sản phẩm:</label>
+            <input type="hidden" value="@Model.Id" id="txtProductId" />
+            <input type="text" class="form-control" value="@Model.Name" id="txtProductName">
+        </div>
 
-<button type="button" class="btn btn-success" id="btnSave">Update</button>
-<button type="button" class="btn btn-default" id="btnBack">Back</button>
+        <div class="form-group">
+            <label for="email">giá sản phẩm:</label>
+            <input type="text" class="form-control" value="@Model.Price" id="txProductPrice">
+        </div>
 
+        <div class="form-group" style="padding-bottom: 60px;">
+            <label for="Title" class="control-label col-md-3">Ảnh sản phẩm:<span class="required">*</span></label>
+            <div class="col-md-6">
+                <div class="input-icon right">
+                    <input id="upload" class="form-control" type="file" name="upload" accept="image/*" multiple="multiple" />
+                    <p style="color:red">Chọn từ 1 - 3 ảnh sản phẩm</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-3">ảnh đã chọn:<span class="required">*</span></label>
+            <div class="col-md-6">
+                <div class="input-icon right">
+                    <div id="dvPreview">
+                    </div>
+                    <div id="divAddMoreImage" style="display:none;">
+                        <input type="file" id="fileaddMore" style="display:none">
+                        <a style="cursor:pointer;" onclick="openFileOption();"><i class="fa fa-plus-circle"></i>Thêm ảnh</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-3">Nhóm Biến thể:<span class="required">*</span></label>
+            <div class="col-md-6">
+                <div class="input-icon right">
+                    <select id="ddlAttrGroup" class="form-control">
+                        <option value="1">Size</option>
+                        @*<option value="1">Color</option>*@
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-3">Nhóm Biến thể con:<span class="required">*</span></label>
+            <div class="col-md-6">
+                <div class="input-icon right">
+                    <select id="ddlAttrGroup" class="form-control">
+                        <option value="1">Size M</option>
+                        <option value="1">Size S</option>
+                        <option value="1">Size XL</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-3">Nhóm Biến thể con:<span class="required">*</span></label>
+            <div class="col-md-6">
+                <div class="input-icon right" id="group_attribute">
+                    <div class="row">
+                        <div class="column"><input type="text" id="txtPrice_0" class="form-control" placeholder="nhập giá" /></div>
+                        <div class="column"><input type="text" id="txtQuantity_0" class="form-control" placeholder="nhập số lượng" /></div>
+                        <div class="column"><a class="btn btn-success" onclick="Add_Atrribute()"><i class="fa fa-plus"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button type="button" class="btn btn-success" id="btnSave">Update</button>
+        <button type="button" class="btn btn-default" id="btnBack">Back</button>
+    </div>
+</section>
 <script>
 
     $(document).ready(function () {
@@ -34,20 +111,156 @@
 
             window.location.href = "/Product";
         });
+
+
+        $('#upload').on('change', function () {
+            statusEditAva = 1;
+            if (typeof (FileReader) != "undefined") {
+                var dvPreview = $("#dvPreview");
+                dvPreview.html("");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                var index = 0;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var img = $("<img class='img_" + index + "'/> <span id='span_img_" + index + "'><a onclick='RemoveProductImage(" + index + ")'>Xóa</a></span> <br/>");
+                            img.attr("style", "height:250px;width: 250px");
+                            img.attr("src", e.target.result);
+                            //  console.log(e.target.result);
+                            dvPreview.append(img);
+                            index++;
+                        }
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " is not a valid image file.");
+                        dvPreview.html("");
+                        return false;
+                    }
+
+
+                });
+                $("#divAddMoreImage").show();
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+
+        $('#fileaddMore').on('change', function () {
+            var dvPreview = $("#dvPreview");
+            if (typeof (FileReader) != "undefined") {
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+
+                            var count = $("#dvPreview img").length; //2
+                            if (count != null && count != "") {
+                                count = parseInt(count, 10) - 1; // 1
+                            }
+
+                            var img = $("<img class='img_" + (parseInt(count, 10) + 1) + "'/> <span id='span_img_" + (parseInt(count, 10) + 1) + "'><a onclick='RemoveProductImage(" + (parseInt(count, 10) + 1) + ")'>Xóa</a></span> <br/>");
+                            img.attr("style", "height:250px;width: 250px");
+                            img.attr("src", e.target.result);
+                            //  console.log(e.target.result);
+                            dvPreview.append(img);
+                            // $('#imgPreview').attr("src", e.target.result);
+
+                        };
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " không phải là file ảnh.");
+                        dvPreview.html("");
+                        return false;
+                    }
+                    return false;
+                });
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+
     });
 
+
+    function Add_Atrribute() {
+
+        var index_count = [];
+        $("#group_attribute .row").each(function (index, value) {
+            index_count.push(index);
+        });
+        console.log(index_count.length);
+        var item_index = index_count.length;
+
+        var html = "";
+        html += "<div class=\"row\">";
+        html += "<div class=\"column\"><input type=\"text\" id=\"txtPrice_" + item_index + "\" class=\"form-control\" placeholder=\"nhập giá\" /></div>";
+        html += "<div class=\"column\"><input type=\"text\" id=\"txtQuantity_" + item_index + "\" class=\"form-control\" placeholder=\"nhập số lượng\" /></div>";
+        html += "<div class=\"column\"><a class=\"btn btn-success\" onclick=\"Remove_Atrribute(" + item_index + ")\"><i class=\"fa fa-trash\"></i></a></div>";
+        html += "</div>";
+
+        $("#group_attribute").append(html);
+    }
+
+    function openFileOption() {
+        $("#fileaddMore").click();
+    }
+
+    function RemoveProductImage(index) {
+        $("#dvPreview .img_" + index).remove();
+        $("#dvPreview #span_img_" + index).remove();
+    }
     function ProductInsertUpdate() {
+
+
+        // đọc từ thẻ div dvPreview  xem có bao nhiêu ảnh trong thẻ div đó
+        var lstImageSrc = "";
+        $("#dvPreview img").each(function (index, item) {
+
+            var imageBase64 = item.src;
+            if (imageBase64 != null || imageBase64 != "") {
+                // Cắt bỏ đi data:image/jpeg;base64,
+                imageBase64 = imageBase64.split(',')[1];
+                lstImageSrc += imageBase64 + "_";
+            }
+        });
+
+        // Cắt bỏ ký tự "_" ở cuối cùng
+        if (lstImageSrc != null && lstImageSrc.length > 0) {
+            lstImageSrc = lstImageSrc.substring(0, lstImageSrc.length - 1);
+        }
+
+
+        // thực hiện lấy attribute
+
+        var attr_price = "";
+        var attr_quantity = "";
+        $("#group_attribute .row").each(function (index, value) {
+            attr_price += $("#txtPrice_" + index).val() + ",";
+            attr_quantity += $("#txtQuantity_" + index).val() + ",";
+        });
+
+        $("#group_attribute .row").each(function (index, value) {
+            console.log("index:" + index);
+        });
 
         var Url = '/Product/Product_InsertUpdate';
         var input_data = {
             Id: $("#txtProductId").val(),
             Name: $("#txtProductName").val(),
             Price: $("#txProductPrice").val(),
-            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+            ImageSrc: lstImageSrc,
+            AttPrice: attr_price,
+            AttrQuantity: attr_quantity
+            // __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
 
         };
 
-        // Validation 
+        // Validation
 
         $.ajax({
             type: 'POST',

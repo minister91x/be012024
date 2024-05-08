@@ -11,4 +11,10 @@ namespace DataAccess.ProductNetFrameWork.DTO
         public int returnCode { get; set; }
         public string returnMessage { get; set; }
     }
+
+    public class SaveImageReturnData
+    {
+        public int ReturnCode { get; set; }
+        public string ReturnMsg { get; set; }
+    }
 }
